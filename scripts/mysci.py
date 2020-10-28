@@ -1,7 +1,33 @@
 #--python is very sensitive to whitespace
 #--therefore it is important to be consistent with spaces
 #--initialize my data variable
-data = []
+#data = [] # --as list
+data = {'date':[], 'time':[], 'tempout':[]} # --as dictionary
+
+
+#--Read the data file
+filename='../data/wxobs20170821.txt'
+
+with open(filename, 'r') as datafile:
+    
+    #-- read the first three lines (header)
+    for _ in range(3):
+        datafile.readline()
+
+    #-- Read and parse the rest of the file
+    for line in datafile:
+        split_line = line.split()
+        data['date'].append(split_line[0])
+        data['time'].append(split_line[1])
+        data['tempout'].append(split_line[2])
+
+
+exit()
+
+#--initialize my data variable
+#data = [] # --as list
+data = {'date':[], 'time':[], 'tempout':[]} # --as dictionary
+
 
 #--Read the data file
 filename='../data/wxobs20170821.txt'
