@@ -20,7 +20,6 @@ with open(filename, 'r') as datafile:
     
     #-- read the first three lines (header)
     for _ in range(3):
-        headerline = datafile.readline()
         datafile.readline()
         #print(headerline)
     #-- Read and parse the rest of the file
