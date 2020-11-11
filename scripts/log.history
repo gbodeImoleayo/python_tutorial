@@ -1,0 +1,32 @@
+ 1056  vi mysci.py
+ 1057  python mysci.py
+ 1058  vi mysci.py
+ 1059  python mysci.py
+ 1060  vi mysci.py
+ 1061  git status
+ 1062  cd ..
+ 1063  git status
+ 1064  git add scripts
+ 1065  git status
+ 1066  git commit -m 'Adding a script folder'
+ 1067  git status
+ 1068  git log
+ 1069  git log --oneline
+ 1070  ls
+ 1071  cd scripts
+ 1077  git commit -m "Output formatting comparison data"
+ 1078  vi mysci.py
+ 1079  git add mysci.py
+ 1080  git commit -m "Output formatting comparison data"
+ 1081  git remote add origin git@https://github.com/gbodeImoleayo/python_tutorial.git
+ 1082  git remote -v
+ 1083  git remote add origin git@github.com:gbodeImoleayo/python_tutorial.git
+ 1084  git remote -v
+ 1085  git remote remove origin 
+ 1086  git remote add origin git@github.com:gbodeImoleayo/python_tutorial.git
+ 1087  git remote -v
+ 1088  git push origin master
+ 1089  git remote remove origin 
+ 1090  git remote add origin https://github.com/gbodeImoleayo/python_tutorial.git
+ 1091  git remote -v
+ 1092  git push origin master
