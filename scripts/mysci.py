@@ -21,7 +21,8 @@ with open(filename, 'r') as datafile:
     #-- read the first three lines (header)
     for _ in range(3):
         headerline = datafile.readline()
-        print(headerline)
+        datafile.readline()
+        #print(headerline)
     #-- Read and parse the rest of the file
     for line in datafile:
         split_line = line.split()
@@ -31,110 +32,35 @@ with open(filename, 'r') as datafile:
             value = t(split_line[i])
             data[column].append(value)
 
-exit()
+#-- Compute the wind chill temperature
+def compute_windchill(t, v):
+    a = 35.74
+    b = 0.6215
+    c = 35.75
+    d = 0.4275
 
-#--initialize my data variable
-#data = [] # --as list
-data = {'date':[], 'time':[], 'tempout':[]} # --as dictionary
+    v16 = v**16
+    wci = a + (b * t) - (c * v16) + (d * t * v16)
 
-
-#--Read the data file
-filename='../data/wxobs20170821.txt'
-
-with open(filename, 'r') as datafile:
-    
-    #-- read the first three lines (header)
-    for _ in range(3):
-        datafile.readline()
-
-    #-- Read and parse the rest of the file
-    for line in datafile:
-        split_line = line.split()
-        data['date'].append(split_line[0])
-        data['time'].append(split_line[1])
-        data['tempout'].append(float(split_line[2]))
-
-exit()
-
-#--initialize my data variable
-#data = [] # --as list
-data = {'date':[], 'time':[], 'tempout':[]} # --as dictionary
+    return wci
 
 
-#--Read the data file
-filename='../data/wxobs20170821.txt'
-
-with open(filename, 'r') as datafile:
-    
-    #-- read the first three lines (header)
-    for _ in range(3):
-        datafile.readline()
-
-    #-- Read and parse the rest of the file
-    for line in datafile:
-        datum = line.split()
-        data.append(datum)
-
-exit()
+#--Running the function to compute wci
+windchill = []
+for temp, windspeed in zip(data['tempout'], data['windspeed']):
+    windchill.append(compute_windchill(temp,windspeed))
 
 
-#--initialize my data variable
-data = []
 
-#--Read the data file
-filename='../data/wxobs20170821.txt'
-
-with open(filename, 'r') as datafile:
-    
-    #-- read the first three lines (header)
-    for _ in range(3):
-        datafile.readline()
-
-    #-- Read and parse the rest of the file
-    for line in datafile:
-        datum = line.split()
-        data.append(datum)
-
-#DEBUG
-for datum in data:
-    print(datum)
-
-
-exit()
-
-#--initialize my data variable
-data = []
-
-#--Read the data file
-filename='../data/wxobs20170821.txt'
-
-with open(filename, 'r') as datafile:
-    data = datafile.read()
-
-
-exit()
-#--DEBUG
-print(type(data))
-
-
-exit()
-#--open the file
-datafile=open(filename, 'r')
-
-data = datafile.read()
 
 #--DEBUG
-print(data)
-print('data')
+print(windchill)
 
-#--close the file
-datafile.close() 
+#for i, j in zip([1, 2], [3, 4, 5]):
+#    print(i,j)
+
+
+
 exit()
-#--print out the first few lines of the data
-print(datafile.readline()) #--read first line 
-print(datafile.readline()) #--read second line and so on
-print(datafile.readline()) 
-print(datafile.readline())
 
-#--close the file
-datafile.close() 
+
